@@ -1,0 +1,22 @@
+Device: ONEPLUS 15R
+Recommended Recovery: https://downloads.sourceforge.net/project/rab1d-s-roms/PROJECT_INFINITY_X/recoveries/infinity_macan_recovery.img
+fastboot flash recovery infinity_macan_recovery.img
+
+Flashing Instructions:
+
+* Clean Flash:
+1. Reboot to recovery [AOSP Recovery Recommended] (Get from here: https://sourceforge.net/projects/infinity-x/files/ktm/16/infinity_ktm-recoveryimage.img)
+2. Apply update -> adb sideload
+3. adb sideload rom.zip
+4. Reboot recovery
+5. Format data
+6. Reboot
+
+* Dirty Flash:
+1. Reboot to recovery
+2. Apply update -> adb sideload
+3. adb sideload rom.zip
+4. Reboot
+
+* OTA:
+1. Simply upgrade via OTA updater (if pushed or by importing local update)
