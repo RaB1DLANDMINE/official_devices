@@ -5,7 +5,7 @@ fastboot flash recovery infinity_macan_recovery.img
 Flashing Instructions:
 
 * Clean Flash:
-1. Reboot to recovery [AOSP Recovery Recommended] (Get from here: https://sourceforge.net/projects/infinity-x/files/ktm/16/infinity_ktm-recoveryimage.img)
+1. Reboot to recovery [AOSP Recovery Recommended] (Get from here: https://sourceforge.net/projects/rab1d-s-roms/files/PROJECT_INFINITY_X/recoveries/infinity_macan_recovery.img)
 2. Apply update -> adb sideload
 3. adb sideload rom.zip
 4. Reboot recovery
