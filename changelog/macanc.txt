@@ -1,0 +1,24 @@
+Changelog:
+
+Core & Base
+- Infinity-X core bumped 3.11 → 3.12 — latest platform, security, and framework improvements.
+- OnePlus stock blobs upgraded 8.301 → 9.400 — newer vendor firmware, HALs, and camera stack for improved stability and hardware parity with OxygenOS.
+- OnePlus SuperVOOC implemented — proprietary fast-charging protocol wired into the build for full-speed charging parity with OxygenOS.
+OOS Camera
+- Rock-solid stability — the full OxygenOS camera experience with every known crash resolved, including capture-time library failures. No outstanding camera bugs.
+- On-device Face Tracking & QR Scanning — no AICore required. Real-time face detection and instant QR recognition run entirely in-app via bundled decoding, with zero dependency on OnePlus's AI service. All the smarts, none of the bloat.
+Performance
+- ZRAM enabled — compressed swap configured out of the box (default: 3/4 of total device RAM) for smoother multitasking and better memory headroom.
+- High Touch Sampling Rate — elevated touch polling for noticeably crisper, lower-latency response in games and everyday scrolling.
+Display & Ambient
+- Smarter auto-brightness — reworked ambient-light response eliminates the pocket-to-daylight lag and the slightly-too-dim indoor levels; the screen now recovers and settles far faster and brighter.
+- AOD Raise-to-Wake — new toggle in InfinitySuite Settings to wake Always-On Display with a simple lift of the device.
+Debloat & Privacy
+- OxygenOS bloatware & telemetry stripped — all non-essential OOS apps and spyware/tracking components removed for a lean, private, and trusted build.
+Fixes
+- Lock screen charging stats — incorrect charging values on the lock screen now display accurately.
+- HEIF OPlus Camera crashes — resolved crashes in the OnePlus camera app related to HEIF handling (taking HEIF hi-res/portrait photos still not fixed).
+Bugs
+- Taking HEIF hi-res/portrait photos still crashes/fails.
+- Find me some more ;)
+This build will be pushed as an official build once every build has been confirmed to have minimal crashes/bugs.
