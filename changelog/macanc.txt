@@ -22,3 +22,18 @@ Bugs
 - Taking HEIF hi-res/portrait photos still crashes/fails.
 - Find me some more ;)
 This build will be pushed as an official build once every build has been confirmed to have minimal crashes/bugs.
+
+──────────────────────────────
+Update — 24.07.2026
+
+Fixes
+- Charging status stuck on — the charging indicator no longer stays on after unplugging; it now follows the real plug state instead of a lingering "full" battery status.
+- Gesture navigation "Low" too low — the Low back-gesture sensitivity was too narrow to register; widened so it's usable again, with Medium/High unchanged.
+- OTA & device name — ro.infinity.device is now defined in-build, so update checks resolve correctly and the device name shows properly in About and on the lock screen.
+
+InfinitySuite
+- Lock screen "Always portrait" — new toggle (Lock screen ▸ General, on by default) keeps the lock and unlock screen in portrait even with auto-rotate on, so the rotate button can no longer force it into landscape.
+- Glass UI — new Themes ▸ Glass UI section with independent toggles for Quick Settings, the Volume panel, and Settings (all off by default). Quick Settings and the volume dialog now use true frosted-glass blur that reveals the wallpaper behind them, instead of a flat translucent tint.
+
+OOS Camera
+- Thumbnail opens your gallery — tapping the last-shot thumbnail in the camera now opens a gallery instead of doing nothing (it was trying to launch OxygenOS's gallery, which isn't installed). It uses Android's standard "Open with" picker, so you pick which gallery to use and can set a default with "Always".
