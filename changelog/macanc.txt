@@ -1,39 +1,67 @@
-Changelog:
+Infinity-X — Changelog (1.08.2026)
 
 Core & Base
-- Infinity-X core bumped 3.11 → 3.12 — latest platform, security, and framework improvements.
-- OnePlus stock blobs upgraded 8.301 → 9.400 — newer vendor firmware, HALs, and camera stack for improved stability and hardware parity with OxygenOS.
-- OnePlus SuperVOOC implemented — proprietary fast-charging protocol wired into the build for full-speed charging parity with OxygenOS.
+- Infinity-X core 3.11 → 3.12 — latest platform, security & framework updates.
+- OnePlus stock blobs 8.301 → 9.400 — newer firmware, HALs & camera stack (OxygenOS parity).
+- SuperVOOC wired in for full-speed, OxygenOS-parity fast charging.
+
 OOS Camera
-- Rock-solid stability — the full OxygenOS camera experience with every known crash resolved, including capture-time library failures. No outstanding camera bugs.
-- On-device Face Tracking & QR Scanning — no AICore required. Real-time face detection and instant QR recognition run entirely in-app via bundled decoding, with zero dependency on OnePlus's AI service. All the smarts, none of the bloat.
+- Full OxygenOS camera experience — 100% stable. Every known bug fixed: capture-time library failures, HEIF handling, and the depth-video/aperture-change audio glitch. No outstanding camera bugs.
+- On-device Face Tracking & QR scanning — runs in-app, no AICore / OnePlus AI dependency.
+- Thumbnail opens a gallery via Android's app picker (set a default with "Always").
+
 Performance
-- ZRAM enabled — compressed swap configured out of the box (default: 3/4 of total device RAM) for smoother multitasking and better memory headroom.
-- High Touch Sampling Rate — elevated touch polling for noticeably crisper, lower-latency response in games and everyday scrolling.
+- ZRAM on by default (¾ of RAM) for smoother multitasking.
+- High Touch Sampling Rate for crisper, lower-latency input in games and scrolling.
+
+Battery & Idle
+- Aggressive deep-Doze — drops into deep sleep within minutes of screen-off and stays there; much less overnight drain, with background apps auto-restricted instead of waking the phone all night.
+
 Display & Ambient
-- Smarter auto-brightness — reworked ambient-light response eliminates the pocket-to-daylight lag and the slightly-too-dim indoor levels; the screen now recovers and settles far faster and brighter.
-- AOD Raise-to-Wake — new toggle in InfinitySuite Settings to wake Always-On Display with a simple lift of the device.
-Debloat & Privacy
-- OxygenOS bloatware & telemetry stripped — all non-essential OOS apps and spyware/tracking components removed for a lean, private, and trusted build.
-Fixes
-- Lock screen charging stats — incorrect charging values on the lock screen now display accurately.
-- HEIF OPlus Camera crashes — resolved crashes in the OnePlus camera app related to HEIF handling (taking HEIF hi-res/portrait photos still not fixed).
-Bugs
-- Taking HEIF hi-res/portrait photos still crashes/fails.
-- Find me some more ;)
-This build will be pushed as an official build once every build has been confirmed to have minimal crashes/bugs.
+- Smarter auto-brightness — no more pocket-to-daylight lag or too-dim indoors; recovers faster and brighter.
+- AOD Raise-to-Wake toggle (InfinitySuite).
 
-──────────────────────────────
-Update — 24.07.2026
+Audio
+- Dolby Atmos — now fully working on 15R/A6T for the first time despite no official OEM support. Dolby actually processes the audio, with live EQ, sound profiles, virtualizers and advanced settings, plus per-device memory. Includes AC-3 / E-AC-3 (JOC) Dolby Atmos decoding — spatial Atmos for movies, videos and games renders and plays through the platform spatializer.
+- AC-4 Dolby Atmos music (Tidal Atmos) — now plays. OnePlus stripped the Dolby DSP topology from this platform's firmware, so the stock AC-4 decoder renders pure silence here (confirmed against a byte-identical same-SoC reference). We replaced it with a custom open-source software AC-4 decoder that does the whole decode on the CPU, bypassing the missing DSP entirely — so immersive-stereo Atmos music (e.g. Tidal) finally has real, audible sound on this hardware. A first for this platform.
+- ViPER4Android/FX bundled by default — full system-wide audio effects, no manual install.
+- Dolby and ViPER are mutually exclusive — enabling one automatically switches the other off, so they never stack or fight.
+- LHDC Bluetooth codec — Savitech's hi-res LHDC (V3 & V5) now works on 15R/A6T, streaming true hi-res audio to compatible earbuds/headphones — a first for this Qualcomm platform, which can't hardware-encode LHDC. Selectable like any other Bluetooth codec, and the everyday codecs (SBC/AAC/LDAC) still use the efficient hardware path.
 
-Fixes
-- Charging status stuck on — the charging indicator no longer stays on after unplugging; it now follows the real plug state instead of a lingering "full" battery status.
-- Gesture navigation "Low" too low — the Low back-gesture sensitivity was too narrow to register; widened so it's usable again, with Medium/High unchanged.
-- OTA & device name — ro.infinity.device is now defined in-build, so update checks resolve correctly and the device name shows properly in About and on the lock screen.
+Glass UI — Smoked Crystal (InfinitySuite ▸ Themes ▸ Glass UI; per-surface toggles, all off by default)
+- Quick Settings — frosted translucent tiles reveal the blurred shade; active tiles glow with a wallpaper-tinted accent bloom + hairline sheen.
+- Sliders — brightness/volume pills match the glass and flash accent as you drag, then settle to frost.
+- Volume dialog — dark translucent glass with a sheen edge and a soft glowing level indicator.
+- Notifications — warm frosted-glass cards with a matching sheen edge.
+- Settings — a drifting aurora behind translucent cards; "Aurora shimmer" adds a Monet-tinted aurora across the QS tiles.
+
+System
+- Remote Key Provisioning (RKPD) enabled — helps keystore attestation / Play Integrity.
+- Bypass charging — Game Space toggle now visible; holds the battery at its current level while gaming to cut heat and wear.
+- Plus Key — the old "Search button" is now a proper Plus Key with its own Settings tile and configurable press / long-press actions, including a smart Camera/Shutter action (opens the camera, or fires the shutter when it's already open), with haptics on both.
+- Dolby tile on the Settings home screen opens the Dolby app.
+- Gesture nav "Low" sensitivity widened so it's usable (Medium/High unchanged).
+- Settings icon style defaults to Accent outline + Accent icon.
+- OTA & device name resolve correctly.
+- Updater "Keep custom recovery" — opt-in that carries your custom recovery (e.g. OrangeFox) across seamless OTA updates, which would otherwise replace it with stock recovery. No root required. (BROKEN - SEE KNOWN ISSUES)
 
 InfinitySuite
-- Lock screen "Always portrait" — new toggle (Lock screen ▸ General, on by default) keeps the lock and unlock screen in portrait even with auto-rotate on, so the rotate button can no longer force it into landscape.
-- Glass UI — new Themes ▸ Glass UI section with independent toggles for Quick Settings, the Volume panel, and Settings (all off by default). Quick Settings and the volume dialog now use true frosted-glass blur that reveals the wallpaper behind them, instead of a flat translucent tint.
+- Lock screen "Always portrait" toggle (on by default) keeps lock/unlock upright with auto-rotate on.
 
-OOS Camera
-- Thumbnail opens your gallery — tapping the last-shot thumbnail in the camera now opens a gallery instead of doing nothing (it was trying to launch OxygenOS's gallery, which isn't installed). It uses Android's standard "Open with" picker, so you pick which gallery to use and can set a default with "Always".
+Debloat & Privacy
+- OxygenOS bloatware & telemetry stripped for a lean, private, trusted build.
+
+Fixes
+- Glass UI blur engine fixed (a stray flag had disabled all cross-window blur).
+- Lock screen charging stats now display accurately.
+- Charging status no longer sticks "on" — the icon / USB-debugging notification clear promptly on disconnect.
+
+And there's some other small stuff you'll find on your own :)
+
+Known issues
+- It's the stable build. There's none (that I know of).
+- EXCEPPTTTT for the Keep custom recovery switch in updater being broken and not working.
+
+this build has been delayed way too long. enjoy.
+
+- RaB1D
